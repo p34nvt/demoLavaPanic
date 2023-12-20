@@ -1,0 +1,182 @@
+[gd_scene load_steps=27 format=3 uid="uid://bjy2ij6ss7eif"]
+
+[ext_resource type="Texture2D" uid="uid://dlgvw4pa8y2or" path="res://textures/stone.jpg" id="1_0ay4q"]
+[ext_resource type="PackedScene" uid="uid://cacnfci67xhqm" path="res://gout.tscn" id="2_1ku7o"]
+[ext_resource type="Texture2D" uid="uid://bx5xb1sn460nm" path="res://textures/magma.jpg" id="2_e3c0g"]
+[ext_resource type="Script" path="res://scripts/SteveCol.gd" id="3_1lx3w"]
+[ext_resource type="Texture2D" uid="uid://cc0lb0vn1wkhl" path="res://textures/empty.png" id="3_bscvj"]
+[ext_resource type="Script" path="res://scripts/Aura.gd" id="4_uejna"]
+[ext_resource type="Texture2D" uid="uid://wsab44fhqhxl" path="res://textures/steve/stand.png" id="5_bp5jk"]
+[ext_resource type="Texture2D" uid="uid://bj3q0vma3i03f" path="res://textures/steve/walk.png" id="7_x8s4d"]
+[ext_resource type="Texture2D" uid="uid://b5t4r1xxw3uiu" path="res://textures/steve/stand-left.png" id="8_vvgpb"]
+[ext_resource type="Texture2D" uid="uid://6wsnt6j1uct3" path="res://textures/steve/walk-left.png" id="9_ei1q3"]
+[ext_resource type="Script" path="res://scripts/BucketCol.gd" id="9_fclxq"]
+[ext_resource type="Script" path="res://scripts/Ground.gd" id="11_2221x"]
+[ext_resource type="Script" path="res://scripts/Marker2D.gd" id="12_g10r5"]
+[ext_resource type="PackedScene" uid="uid://bqbic7errgswv" path="res://splash.tscn" id="14_0nr32"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_alcfm"]
+resource_name = "magma"
+texture = ExtResource("1_0ay4q")
+texture_region_size = Vector2i(128, 128)
+use_texture_padding = false
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_exohu"]
+resource_name = "magma"
+texture = ExtResource("2_e3c0g")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gj8a0"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_alcfm")
+sources/1 = SubResource("TileSetAtlasSource_exohu")
+
+[sub_resource type="LabelSettings" id="LabelSettings_n8jgb"]
+font_size = 30
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7xgi4"]
+radius = 24.0
+height = 84.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gpcb7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rfkhc"]
+animations = [{
+"frames": [{
+"duration": 0.7,
+"texture": ExtResource("8_vvgpb")
+}, {
+"duration": 0.7,
+"texture": ExtResource("9_ei1q3")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.7,
+"texture": ExtResource("5_bp5jk")
+}, {
+"duration": 0.7,
+"texture": ExtResource("7_x8s4d")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arx8v"]
+resource_local_to_scene = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gj8ye"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mnluo"]
+size = Vector2(28.0635, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_um7k8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4hlcr"]
+
+[node name="World" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TileMap" type="TileMap" parent="CanvasLayer"]
+show_behind_parent = true
+z_index = -5
+tile_set = SubResource("TileSet_gj8a0")
+format = 2
+layer_0/name = "Layer0"
+layer_0/tile_data = PackedInt32Array(0, 1, 0, 65536, 0, 0, 131072, 0, 0, 196608, 0, 0, 262144, 0, 0, 1, 1, 0, 65537, 0, 0, 131073, 0, 0, 196609, 0, 0, 262145, 0, 0, 2, 1, 0, 65538, 0, 0, 131074, 0, 0, 196610, 0, 0, 262146, 0, 0, 3, 1, 0, 65539, 0, 0, 131075, 0, 0, 196611, 0, 0, 262147, 0, 0, 4, 1, 0, 65540, 0, 0, 131076, 0, 0, 196612, 0, 0, 262148, 0, 0, 5, 1, 0, 65541, 0, 0, 131077, 0, 0, 196613, 0, 0, 262149, 0, 0, 6, 1, 0, 65542, 0, 0, 131078, 0, 0, 196614, 0, 0, 262150, 0, 0, 7, 1, 0, 65543, 0, 0, 131079, 0, 0, 196615, 0, 0, 262151, 0, 0, 8, 1, 0, 65544, 0, 0, 131080, 0, 0, 196616, 0, 0, 262152, 0, 0, 9, 1, 0, 65545, 0, 0, 131081, 0, 0, 196617, 0, 0, 262153, 0, 0)
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = -1
+anchor_right = 0.031
+anchor_bottom = 0.036
+offset_left = 37.0
+offset_top = 44.0
+offset_right = 66.32
+offset_bottom = 46.96
+label_settings = SubResource("LabelSettings_n8jgb")
+
+[node name="SteveCol" type="CharacterBody2D" parent="CanvasLayer"]
+top_level = true
+position = Vector2(600, 400)
+platform_floor_layers = 4294967041
+platform_wall_layers = 1
+script = ExtResource("3_1lx3w")
+
+[node name="Aura" type="Area2D" parent="CanvasLayer/SteveCol"]
+script = ExtResource("4_uejna")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/SteveCol/Aura"]
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_7xgi4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/SteveCol"]
+scale = Vector2(5, 5.5)
+shape = SubResource("CapsuleShape2D_gpcb7")
+
+[node name="SteveSprite" type="AnimatedSprite2D" parent="CanvasLayer/SteveCol"]
+sprite_frames = SubResource("SpriteFrames_rfkhc")
+animation = &"right"
+
+[node name="BucketCol" type="Area2D" parent="CanvasLayer/SteveCol/SteveSprite"]
+position = Vector2(50, 0)
+input_pickable = false
+script = ExtResource("9_fclxq")
+
+[node name="BucketSprite" type="Sprite2D" parent="CanvasLayer/SteveCol/SteveSprite/BucketCol"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_bscvj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/SteveCol/SteveSprite/BucketCol"]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_arx8v")
+
+[node name="Floor" type="StaticBody2D" parent="CanvasLayer"]
+position = Vector2(640, 576)
+scale = Vector2(63, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Floor"]
+position = Vector2(0, -21)
+shape = SubResource("RectangleShape2D_gj8ye")
+
+[node name="Ground" type="Area2D" parent="CanvasLayer/Floor"]
+script = ExtResource("11_2221x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/Floor/Ground"]
+position = Vector2(2.09524, -21)
+shape = SubResource("RectangleShape2D_mnluo")
+
+[node name="LeftWall" type="StaticBody2D" parent="CanvasLayer" groups=["wall"]]
+position = Vector2(-20, 300)
+scale = Vector2(2, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/LeftWall"]
+shape = SubResource("RectangleShape2D_um7k8")
+
+[node name="RightWall" type="StaticBody2D" parent="CanvasLayer" groups=["wall"]]
+position = Vector2(1300, 300)
+scale = Vector2(2, 30)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CanvasLayer/RightWall"]
+shape = SubResource("RectangleShape2D_4hlcr")
+
+[node name="Spawner" type="Marker2D" parent="CanvasLayer"]
+unique_name_in_owner = true
+z_index = 8
+position = Vector2(0, 136)
+script = ExtResource("12_g10r5")
+gout_scene = ExtResource("2_1ku7o")
+splash_scene = ExtResource("14_0nr32")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="."]
+pitch_scale = 0.8
+max_polyphony = 10
+
+[node name="Music" type="AudioStreamPlayer2D" parent="."]
+max_polyphony = 10

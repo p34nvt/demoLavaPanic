@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqbic7errgswv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nwu57"]
+
+[node name="Splash" type="Area2D" groups=["splash"]]
+visible = false
+position = Vector2(-10, -10)
+scale = Vector2(5, 0.2)
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_nwu57")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(20, 20)
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(1, 0.121569, 0.0392157, 1)

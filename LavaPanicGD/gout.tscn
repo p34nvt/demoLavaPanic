@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cacnfci67xhqm"]
+
+[ext_resource type="Script" path="res://scripts/Gout.gd" id="1_3q12a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4epww"]
+size = Vector2(2, 2)
+
+[node name="Gout" type="Area2D" groups=["gout"]]
+z_index = 10
+script = ExtResource("1_3q12a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4epww")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 9.0
+offset_bottom = 9.0
+color = Color(1, 0.219608, 0, 1)
+metadata/_edit_use_anchors_ = true
